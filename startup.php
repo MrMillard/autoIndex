@@ -2,12 +2,17 @@
 	require_once "horse_db_login.php";
 	$conn = mysqli_connect($host, $user, $pass, $db, $port);
 	if($conn->connect_error) die($conn->connect_error);
-	$query = "select breed from horses;";
+	$query = "select name from Breeds;";
 	$result = mysqli_query($conn, $query);
-	echo "<form action = 'Horses.php' method = 'post'>";
-		echo "<select name = 'breed'>";
-		while ($row = mysqli_fetch_assoc($result)) {
-			echo "<option value = '" . $row[breed] . "'></option>";
-		}
-		echo "</select> <input type = 'submit' value='Choose a horse to see'> </form>"
 ?>
+	<form action = 'Horses.php' method = 'post'>"
+		<select name = 'breed'>"
+<?php
+while ($row = mysqli_fetch_assoc($result)) 
+{ 
+	echo "<option value = '" . $row["name"] ."'>" . $row["name"] . "</option>";
+}
+?>			
+		</select> 
+		<input type = 'submit' value='Choose a horse to see'> 
+	</form>
